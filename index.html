@@ -1,0 +1,1774 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>გილოცავ დაბადებისდღეს!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f5efe0;
+        --parchment: #e8dcc8;
+        --dark-brown: #2c1a0e;
+        --medium-brown: #5c3a1e;
+        --red-stamp: #8b1a1a;
+        --gold: #c9a84c;
+        --gold-light: #f0d080;
+        --ink: #1a0f0a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        background: #1a0f0a;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      .floating-ornaments {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .floating-ornaments span {
+        position: absolute;
+        color: rgba(201, 168, 76, 0.45);
+        font-size: 22px;
+
+        animation: floatOrnament linear infinite;
+      }
+
+      /* positions */
+      .floating-ornaments span:nth-child(1) {
+        left: 12%;
+        top: 20%;
+        animation-duration: 8s;
+      }
+
+      .floating-ornaments span:nth-child(2) {
+        right: 15%;
+        top: 28%;
+        animation-duration: 10s;
+      }
+
+      .floating-ornaments span:nth-child(3) {
+        left: 20%;
+        bottom: 18%;
+        animation-duration: 12s;
+      }
+
+      .floating-ornaments span:nth-child(4) {
+        right: 22%;
+        bottom: 22%;
+        animation-duration: 9s;
+      }
+
+      .floating-ornaments span:nth-child(5) {
+        left: 50%;
+        top: 12%;
+        animation-duration: 14s;
+      }
+
+      @keyframes floatOrnament {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+          opacity: 0.7;
+        }
+
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+      }
+
+      /* ===== PAGE 1 ===== */
+      #page1 {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          ellipse at center,
+          #2c1810 0%,
+          #110806 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      #page1::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(201, 168, 76, 0.03) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(139, 26, 26, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      /* paper texture overlay */
+      #page1::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+        pointer-events: none;
+        opacity: 0.4;
+      }
+
+      .envelope-scene {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        z-index: 1;
+      }
+
+      .hint-text {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 14px;
+        color: rgba(201, 168, 76, 0.45);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        animation: fadeInHint 2s ease 1s both;
+      }
+
+      @keyframes fadeInHint {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ENVELOPE SVG STYLE */
+      .envelope-wrap {
+        transition:
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.45s ease;
+      }
+
+      .envelope-wrap:hover {
+        transform: translateY(-10px) scale(1.03) rotate(-2deg);
+
+        filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.35));
+      }
+      .envelope {
+        width: 460px;
+        height: 380px;
+        margin-top: 80px;
+        position: relative;
+        transition: transform 0.8s ease-in-out;
+        filter: drop-shadow(0 24px 64px rgba(0, 0, 0, 0.65))
+          drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        transform: rotate(-2deg);
+        cursor: pointer;
+      }
+
+      .env-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* flap open animation */
+      #flapGroup {
+        transform-origin: 190px 20px;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #flapGroup.open {
+        transform: rotateX(180deg) scaleY(-1) translateY(-40px);
+      }
+
+      /* letter pop up */
+      /* პატარა ბარათის კონტეინერი */
+      .letter-popup {
+        position: absolute;
+        left: 40%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.6);
+        width: 420px; /* ოდნავ დავაგრძელოთ პროპორციებისთვის */
+        height: 520px;
+        opacity: 0;
+        transition:
+          transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 1s ease;
+        z-index: 50;
+        pointer-events: none;
+      }
+
+      .letter-popup.open {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+      }
+
+      /* ბარათის წინა მხარე (თეთრი ქაღალდი) */
+      .letter-front {
+        position: absolute;
+        width: 100%;
+        height: 100%; /* მთლიან სიმაღლეზე */
+        background: #fdfaf4; /* კრემისფერი თეთრი */
+        border-radius: 2px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      /* წითელი ჩარჩო ბარათის შიგნით */
+      .letter-front::before {
+        content: "";
+        position: absolute;
+        inset: 12px; /* დაშორება კიდეებიდან */
+        border: 1px solid #b31217;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      /* ჰორიზონტალური ხაზები */
+      .letter-text {
+        width: 100%;
+        height: 100%;
+        background-image: repeating-linear-gradient(
+          transparent,
+          transparent 31px,
+          rgba(179, 18, 23, 0.1) 31px,
+          rgba(179, 18, 23, 0.1) 32px
+        );
+        line-height: 32px;
+        padding-top: 10px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 17px;
+        color: #2c1a0e;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .letter-name {
+        display: block;
+        font-size: 22px;
+        margin-bottom: 5px;
+        color: #2c1a0e;
+      }
+
+      .letter-sign {
+        display: block;
+        margin-top: 20px;
+        text-align: right;
+        width: 100%;
+        font-weight: bold;
+        color: #2c1a0e;
+      }
+
+      /* BALLOONS */
+      .balloons-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 100;
+        overflow: hidden;
+      }
+
+      #flapGroup.open {
+        transform: rotateX(180deg) scaleY(-1) translateY(-40px);
+      }
+
+      .balloon {
+        position: absolute;
+        bottom: -120px;
+        opacity: 0;
+        animation: none;
+      }
+
+      .balloon.launch {
+        animation: riseUp 6s ease-in forwards;
+      }
+
+      @keyframes riseUp {
+        0% {
+          transform: translateY(0) rotate(var(--tilt, 0deg));
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        85% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(calc(-100vh - 160px)) rotate(var(--tilt2, 5deg));
+          opacity: 0;
+        }
+      }
+
+      .balloon svg {
+        display: block;
+      }
+
+      /* EXPANDED LETTER PAGE */
+      #letter-page {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          #faf6ee 0%,
+          #f0e8d4 50%,
+          #e8dcc8 100%
+        );
+        z-index: 200;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        padding: 48px 24px 64px;
+      }
+
+      #letter-page.visible {
+        display: flex;
+        animation: pageReveal 0.6s ease both;
+      }
+
+      @keyframes pageReveal {
+        from {
+          opacity: 0;
+          transform: scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .letter-full-paper {
+        width: 100%;
+        max-width: 560px;
+        background: linear-gradient(170deg, #fdfaf4 0%, #f5edd8 100%);
+        border: 1px solid rgba(92, 58, 30, 0.12);
+        border-radius: 4px;
+        padding: 52px 52px 60px;
+        position: relative;
+        box-shadow: 0 8px 48px rgba(44, 26, 14, 0.15);
+      }
+
+      .letter-full-paper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          transparent 0px,
+          transparent 27px,
+          rgba(92, 58, 30, 0.06) 27px,
+          rgba(92, 58, 30, 0.06) 28px
+        );
+        border-radius: 4px;
+        pointer-events: none;
+      }
+
+      /* left red margin line */
+      .letter-full-paper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 80px;
+        width: 1px;
+        background: rgba(139, 26, 26, 0.15);
+        border-radius: 1px;
+      }
+
+      .full-letter-header {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 12px;
+        color: rgba(92, 58, 30, 0.45);
+        letter-spacing: 2px;
+        text-align: right;
+        margin-bottom: 36px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .full-letter-greeting {
+        font-family: "Dancing Script", cursive;
+        font-size: 30px;
+        color: var(--medium-brown);
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .full-letter-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 17px;
+        line-height: 1.85;
+        color: var(--ink);
+        position: relative;
+        z-index: 1;
+      }
+
+      .full-letter-text p {
+        margin-bottom: 18px;
+      }
+
+      .full-letter-sign {
+        font-family: "Dancing Script", cursive;
+        font-size: 26px;
+        color: var(--medium-brown);
+        text-align: right;
+        margin-top: 28px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* PHOTOS */
+      .photos-section {
+        width: 100%;
+        max-width: 560px;
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .photo-frame {
+        background: #fff;
+        padding: 10px 10px 32px;
+        box-shadow:
+          0 4px 24px rgba(44, 26, 14, 0.18),
+          0 1px 4px rgba(44, 26, 14, 0.1);
+        transform: rotate(var(--r, -1.5deg));
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: default;
+        position: relative;
+      }
+
+      .photo-frame:nth-child(2) {
+        --r: 1.8deg;
+      }
+      .photo-frame:nth-child(3) {
+        --r: -0.8deg;
+        grid-column: 1 / -1;
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .photo-frame:hover {
+        transform: rotate(0deg) scale(1.03);
+        box-shadow: 0 12px 40px rgba(44, 26, 14, 0.28);
+        z-index: 10;
+      }
+
+      .photo-placeholder {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #e8dcc8, #d4c5a9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px dashed rgba(92, 58, 30, 0.2);
+      }
+
+      .photo-placeholder svg {
+        width: 32px;
+        height: 32px;
+        opacity: 0.35;
+      }
+
+      .photo-placeholder input[type="file"] {
+        display: none;
+      }
+
+      .photo-placeholder label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 12px;
+        color: rgba(92, 58, 30, 0.45);
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      .photo-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+
+      .photo-placeholder img.loaded {
+        display: block;
+      }
+
+      .photo-placeholder.has-img label,
+      .photo-placeholder.has-img svg.upload-icon {
+        display: none;
+      }
+
+      .photo-caption {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: "Dancing Script", cursive;
+        font-size: 13px;
+        color: rgba(92, 58, 30, 0.5);
+      }
+
+      /* BUTTON - gently glowing */
+      .btn-reveal {
+        margin-top: 56px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        font-style: italic;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: transparent;
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        padding: 14px 36px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border-radius: 1px;
+      }
+
+      .btn-reveal::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(201, 168, 76, 0.08),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+      }
+
+      .btn-reveal:hover {
+        border-color: rgba(201, 168, 76, 0.7);
+        color: var(--gold-light);
+        box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
+      }
+
+      .btn-reveal:hover::before {
+        transform: translateX(100%);
+      }
+
+      .btn-arrow {
+        display: inline-block;
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-reveal:hover .btn-arrow {
+        transform: translateX(6px);
+      }
+
+      /* ===== FLOATING POLAROIDS ===== */
+
+      .polaroid-gallery {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 60;
+      }
+
+      .polaroid {
+        position: absolute;
+        width: 150px;
+        background: #fff;
+        padding: 10px 10px 38px;
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, 0.28),
+          0 2px 8px rgba(0, 0, 0, 0.18);
+        opacity: 0;
+        transition:
+          transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 1s ease;
+      }
+
+      .polaroid img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .polaroid span {
+        position: absolute;
+        bottom: 12px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: "Dancing Script", cursive;
+        font-size: 16px;
+        color: #5c3a1e;
+      }
+
+      /* საწყისი მდგომარეობა */
+
+      .pol1 {
+        top: 6%;
+        left: -260px;
+        transform: rotate(-18deg) scale(0.7);
+      }
+
+      .pol2 {
+        top: 30%;
+        left: -240px;
+        transform: rotate(12deg) scale(0.7);
+      }
+
+      .pol3 {
+        top: 58%;
+        left: -260px;
+        transform: rotate(-10deg) scale(0.7);
+      }
+
+      .pol4 {
+        top: 18%;
+        right: -260px;
+        transform: rotate(16deg) scale(0.7);
+      }
+
+      .pol5 {
+        top: 52%;
+        right: -260px;
+        transform: rotate(-14deg) scale(0.7);
+      }
+
+      /* გახსნის შემდეგ */
+
+      .polaroid-gallery.show .pol1 {
+        left: 6%;
+        opacity: 1;
+        transform: rotate(-12deg) scale(1);
+      }
+
+      .polaroid-gallery.show .pol2 {
+        left: 12%;
+        opacity: 1;
+        transform: rotate(10deg) scale(1);
+        transition-delay: 0.15s;
+      }
+
+      .polaroid-gallery.show .pol3 {
+        left: 8%;
+        opacity: 1;
+        transform: rotate(-8deg) scale(1);
+        transition-delay: 0.3s;
+      }
+
+      .polaroid-gallery.show .pol4 {
+        right: 8%;
+        opacity: 1;
+        transform: rotate(14deg) scale(1);
+        transition-delay: 0.2s;
+      }
+
+      .polaroid-gallery.show .pol5 {
+        right: 12%;
+        opacity: 1;
+        transform: rotate(-10deg) scale(1);
+        transition-delay: 0.4s;
+      }
+
+      /* მობილური */
+
+      @media (max-width: 900px) {
+        .polaroid {
+          width: 110px;
+          padding-bottom: 30px;
+        }
+
+        .polaroid img {
+          height: 120px;
+        }
+
+        .pol1,
+        .pol2,
+        .pol3 {
+          left: -180px;
+        }
+
+        .pol4,
+        .pol5 {
+          right: -180px;
+        }
+      }
+
+      /* ===== PAGE 2 - GIFT ===== */
+      #page2 {
+        display: none;
+        min-height: 100vh;
+        background: linear-gradient(
+          160deg,
+          #0d0806 0%,
+          #1a0f0a 50%,
+          #0a0606 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      #page2.visible {
+        display: block;
+        animation: pageReveal 0.7s ease both;
+      }
+
+      .gift-stars {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: var(--gold-light);
+        border-radius: 50%;
+        animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+        opacity: 0;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.2);
+        }
+      }
+
+      .gift-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 64px 24px 80px;
+        gap: 0;
+      }
+
+      .gift-eyebrow {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 13px;
+        letter-spacing: 4px;
+        color: rgba(201, 168, 76, 0.5);
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        animation: fadeUp 0.8s ease 0.2s both;
+      }
+
+      .gift-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 6vw, 52px);
+        color: var(--gold);
+        text-align: center;
+        line-height: 1.2;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+        animation: fadeUp 0.8s ease 0.4s both;
+      }
+
+      .gift-subtitle {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 18px;
+        color: rgba(240, 208, 128, 0.6);
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeUp 0.8s ease 0.6s both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Gift Box */
+      .gift-box-wrap {
+        animation:
+          fadeUp 0.8s ease 0.8s both,
+          giftFloat 5s ease-in-out 1.5s infinite;
+      }
+
+      @keyframes giftFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .gift-box-svg {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 60px;
+      }
+
+      /* Hotel Card */
+      .hotel-card {
+        width: 100%;
+        max-width: 560px;
+        background: linear-gradient(145deg, #1e1209 0%, #160d07 100%);
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        animation: fadeUp 0.8s ease 1s both;
+        box-shadow:
+          0 20px 80px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(201, 168, 76, 0.08);
+      }
+
+      .hotel-card-header {
+        padding: 36px 40px 28px;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .hotel-name {
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+
+      .hotel-stars-display {
+        display: flex;
+        gap: 3px;
+        margin-bottom: 10px;
+      }
+
+      .hotel-stars-display span {
+        color: var(--gold);
+        font-size: 14px;
+      }
+
+      .hotel-tagline {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 14px;
+        color: rgba(201, 168, 76, 0.5);
+        letter-spacing: 1px;
+      }
+
+      .hotel-nights {
+        text-align: right;
+        flex-shrink: 0;
+      }
+
+      .nights-number {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        color: var(--gold);
+        line-height: 1;
+        display: block;
+      }
+
+      .nights-label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 13px;
+        color: rgba(201, 168, 76, 0.5);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .hotel-details {
+        padding: 28px 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .detail-label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(201, 168, 76, 0.35);
+      }
+
+      .detail-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 16px;
+        color: rgba(240, 208, 128, 0.85);
+        line-height: 1.4;
+      }
+
+      .detail-value.gold {
+        color: var(--gold);
+        font-size: 18px;
+      }
+
+      /* Map placeholder */
+      .map-section {
+        width: 100%;
+        max-width: 560px;
+        margin-top: 32px;
+        animation: fadeUp 0.8s ease 1.2s both;
+      }
+
+      .map-section-label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(201, 168, 76, 0.35);
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .map-embed {
+        width: 100%;
+        height: 260px;
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        background: #0d0806;
+      }
+
+      .map-embed iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        filter: sepia(0.5) saturate(0.7) brightness(0.8);
+      }
+
+      .map-overlay-pin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      /* Decorative divider */
+      .divider-gold {
+        width: 100%;
+        max-width: 560px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 40px 0 0;
+        animation: fadeUp 0.8s ease 1.4s both;
+      }
+
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(201, 168, 76, 0.25),
+          transparent
+        );
+      }
+
+      .divider-diamond {
+        color: var(--gold);
+        font-size: 12px;
+        opacity: 0.6;
+      }
+
+      .closing-message {
+        font-family: "Dancing Script", cursive;
+        font-size: 24px;
+        color: var(--gold);
+        text-align: center;
+        margin-top: 20px;
+        opacity: 0.7;
+        animation: fadeUp 0.8s ease 1.6s both;
+      }
+
+      /* GIFT BUTTON */
+
+      .gift-reveal-btn {
+        padding: 10px 10px;
+        border: 1px solid rgba(201, 168, 76, 0.35);
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(6px);
+        color: #6b4a23;
+        margin-top: 10px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 15px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 10px;
+
+        transition:
+          all 0.4s ease,
+          transform 0.35s ease;
+
+        position: relative;
+        overflow: hidden;
+
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      /* glow effect */
+      .gift-reveal-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.45),
+          transparent
+        );
+        transform: translateX(-120%);
+        transition: transform 0.8s ease;
+      }
+
+      .gift-reveal-btn:hover {
+        transform: translateY(-3px) scale(1.03);
+
+        border-color: rgba(201, 168, 76, 0.7);
+
+        color: #c9a84c;
+
+        box-shadow:
+          0 12px 28px rgba(201, 168, 76, 0.18),
+          0 0 25px rgba(201, 168, 76, 0.12);
+      }
+
+      .gift-reveal-btn:hover::before {
+        transform: translateX(120%);
+      }
+
+      .gift-reveal-btn:active {
+        transform: scale(0.98);
+      }
+
+      .hotel-image {
+        width: 100%;
+        max-width: 560px;
+        height: 260px;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        border-bottom: none;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .hotel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.9) contrast(1.05);
+        transition: transform 0.6s ease;
+      }
+
+      .hotel-image img:hover {
+        transform: scale(1.04);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BALLOONS CONTAINER -->
+    <div class="balloons-container" id="balloons"></div>
+
+    <!-- PAGE 1: ENVELOPE -->
+    <div id="page1">
+      <div class="envelope-scene">
+        <div class="floating-ornaments">
+          <span>✦</span>
+          <span>❈</span>
+          <span>✧</span>
+          <span>✦</span>
+          <span>❈</span>
+        </div>
+
+        <div class="envelope-wrap" id="envelopeWrap" onclick="openEnvelope()">
+          <div class="envelope" id="envelope">
+            <svg
+              class="env-svg"
+              viewBox="0 0 380 270"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Paper texture background -->
+              <defs>
+                <filter id="paper">
+                  <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.65"
+                    numOctaves="3"
+                    result="noise"
+                  />
+                  <feColorMatrix
+                    type="saturate"
+                    values="0"
+                    in="noise"
+                    result="grayNoise"
+                  />
+                  <feBlend
+                    in="SourceGraphic"
+                    in2="grayNoise"
+                    mode="multiply"
+                    result="blend"
+                  />
+                  <feComposite in="blend" in2="SourceGraphic" operator="in" />
+                </filter>
+                <clipPath id="envClip">
+                  <rect x="8" y="8" width="364" height="254" rx="6" />
+                </clipPath>
+              </defs>
+
+              <!-- Envelope body -->
+              <rect
+                x="8"
+                y="8"
+                width="364"
+                height="254"
+                rx="6"
+                fill="#f8f4ef"
+              />
+              <!-- Subtle texture wash -->
+              <rect
+                x="8"
+                y="8"
+                width="364"
+                height="254"
+                rx="6"
+                fill="rgba(200,180,160,0.06)"
+              />
+
+              <!-- Red border outline (like in photo) -->
+              <rect
+                x="18"
+                y="18"
+                width="344"
+                height="234"
+                rx="4"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="1.4"
+                stroke-opacity="0.75"
+              />
+
+              <!-- Flap triangle (will animate open) -->
+              <g id="flapGroup">
+                <polygon
+                  points="8,8 380,8 194,148"
+                  fill="#f0ebe3"
+                  stroke="#c0392b"
+                  stroke-width="1.2"
+                  stroke-opacity="0.6"
+                  clip-path="url(#envClip)"
+                />
+                <!-- Flap inner border line -->
+                <line
+                  x1="26"
+                  y1="18"
+                  x2="194"
+                  y2="136"
+                  stroke="#c0392b"
+                  stroke-width="1"
+                  stroke-opacity="0.45"
+                />
+                <line
+                  x1="362"
+                  y1="18"
+                  x2="194"
+                  y2="136"
+                  stroke="#c0392b"
+                  stroke-width="1"
+                  stroke-opacity="0.45"
+                />
+              </g>
+
+              <!-- Bottom side triangles (always visible) -->
+              <polygon
+                points="8,262 194,148 8,8"
+                fill="#ede7de"
+                clip-path="url(#envClip)"
+              />
+              <polygon
+                points="372,262 194,148 372,8"
+                fill="#e5ddd3"
+                clip-path="url(#envClip)"
+              />
+              <!-- Bottom panel -->
+              <polygon
+                points="8,262 372,262 194,148"
+                fill="#f3ede6"
+                clip-path="url(#envClip)"
+              />
+
+              <!-- Diagonal lines on left/right panels (subtle fold lines) -->
+              <line
+                x1="8"
+                y1="8"
+                x2="194"
+                y2="148"
+                stroke="#c0392b"
+                stroke-width="0.8"
+                stroke-opacity="0.25"
+              />
+              <line
+                x1="372"
+                y1="8"
+                x2="194"
+                y2="148"
+                stroke="#c0392b"
+                stroke-width="0.8"
+                stroke-opacity="0.25"
+              />
+              <line
+                x1="8"
+                y1="262"
+                x2="194"
+                y2="148"
+                stroke="#c0392b"
+                stroke-width="0.8"
+                stroke-opacity="0.25"
+              />
+              <line
+                x1="372"
+                y1="262"
+                x2="194"
+                y2="148"
+                stroke="#c0392b"
+                stroke-width="0.8"
+                stroke-opacity="0.25"
+              />
+
+              <!-- Left loop -->
+              <path
+                d="M175 148 C155 126 138 124 140 136 C142 146 162 146 180 150Z"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <!-- Right loop -->
+              <path
+                d="M213 148 C233 126 250 124 248 136 C246 146 226 146 208 150Z"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <!-- Left tail -->
+              <path
+                d="M182 153 C174 160 166 170 160 184"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+
+              <!-- Right tail -->
+              <path
+                d="M206 153 C214 160 222 168 228 182"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+
+              <!-- Center knot -->
+              <path
+                d="M180 150 C186 144 202 144 208 150 C202 156 186 156 180 150Z"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+
+              <!-- Text: For Birthday Princess (handwritten style) -->
+              <text
+                x="194"
+                y="228"
+                font-family="'Dancing Script', cursive"
+                font-size="18"
+                fill="#1a1a2e"
+                text-anchor="middle"
+                letter-spacing="1"
+              >
+                For Birthday Princess
+              </text>
+
+              <!-- Outer border of whole envelope -->
+              <rect
+                x="8"
+                y="8"
+                width="364"
+                height="254"
+                rx="6"
+                fill="none"
+                stroke="#c0392b"
+                stroke-width="1.6"
+                stroke-opacity="0.5"
+              />
+            </svg>
+
+            <div class="letter-popup" id="letterPopup">
+              <div class="letter-front">
+                <div class="letter-text">
+                  <span class="letter-name"
+                    >ნინიკო, ამ საჩუქარს ჰქვია “გაქცევა”</span
+                  >
+
+                  კედელზე ბოლო ჩხირია, მისია დასრულებული.<br />
+
+                  ჟვანიას ციხეს არ ახსოვს დარაჯი მიძინებული.<br />
+                  თავისუფლებას ჩვენც ვიგრძნობთ, კახეთში ტბაზე ღვინის კვრით.
+
+                  <br /><br />
+                  შენთვის ეს პატარა წერილია<br />
+                  სიყვარულით შექმნილი.
+
+                  <button class="gift-reveal-btn" onclick="openGiftPage()">
+                    გახსენი საჩუქარი ✦
+                  </button>
+                  <span class="letter-sign">ავტორი: ანუშკა და მეკუნა</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FLOATING POLAROIDS -->
+        <div class="polaroid-gallery" id="polaroids">
+          <div class="polaroid pol1">
+            <img src="/1.jpg" />
+            <span>memory ✦</span>
+          </div>
+
+          <div class="polaroid pol2">
+            <img src="/2.jpg" />
+            <span>together</span>
+          </div>
+
+          <div class="polaroid pol3">
+            <img src="/3.jpg" />
+            <span>forever</span>
+          </div>
+
+          <div class="polaroid pol4">
+            <img src="/4.jpg" />
+            <span>our day</span>
+          </div>
+
+          <div class="polaroid pol5">
+            <img src="/5.jpg" />
+            <span>love ✦</span>
+          </div>
+        </div>
+
+        <!-- Read full letter button -->
+      </div>
+    </div>
+
+    <!-- PAGE 2: GIFT -->
+    <div id="page2">
+      <!-- Stars -->
+      <div class="gift-stars" id="starsContainer"></div>
+
+      <div class="gift-content">
+        <div class="gift-eyebrow">სიურპრიზი შენთვის</div>
+
+        <div class="gift-title">სასტუმრო<br />საჩუქრად</div>
+        <div class="gift-subtitle">ჯადოსნური ღამე</div>
+
+        <!-- Animated Gift Box -->
+        <div class="gift-box-wrap">
+          <svg
+            class="gift-box-svg"
+            viewBox="0 0 160 160"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Box shadow -->
+            <ellipse cx="80" cy="148" rx="42" ry="6" fill="rgba(0,0,0,0.3)" />
+            <!-- Box bottom -->
+            <rect
+              x="24"
+              y="78"
+              width="112"
+              height="64"
+              rx="3"
+              fill="#1e1209"
+              stroke="#c9a84c"
+              stroke-width="1.5"
+            />
+            <!-- Box lid -->
+            <rect
+              x="18"
+              y="62"
+              width="124"
+              height="22"
+              rx="3"
+              fill="#2c1a0e"
+              stroke="#c9a84c"
+              stroke-width="1.5"
+            />
+            <!-- Ribbon vertical -->
+            <rect
+              x="74"
+              y="62"
+              width="12"
+              height="80"
+              fill="rgba(201,168,76,0.25)"
+              stroke="#c9a84c"
+              stroke-width="1"
+            />
+            <!-- Ribbon horizontal -->
+            <rect
+              x="18"
+              y="68"
+              width="124"
+              height="10"
+              fill="rgba(201,168,76,0.2)"
+              stroke="#c9a84c"
+              stroke-width="1"
+            />
+            <!-- Bow left loop -->
+            <path
+              d="M80 62 C60 40 30 44 34 58 C38 70 68 65 80 62Z"
+              fill="rgba(201,168,76,0.3)"
+              stroke="#c9a84c"
+              stroke-width="1.5"
+            />
+            <!-- Bow right loop -->
+            <path
+              d="M80 62 C100 40 130 44 126 58 C122 70 92 65 80 62Z"
+              fill="rgba(201,168,76,0.3)"
+              stroke="#c9a84c"
+              stroke-width="1.5"
+            />
+            <!-- Bow center -->
+            <circle cx="80" cy="62" r="7" fill="#c9a84c" opacity="0.8" />
+            <!-- Sparkles -->
+            <g class="sparkle-group">
+              <path
+                d="M140 30 L142 36 L148 38 L142 40 L140 46 L138 40 L132 38 L138 36Z"
+                fill="#c9a84c"
+                opacity="0.7"
+              />
+              <path
+                d="M18 45 L19.5 49 L23.5 50.5 L19.5 52 L18 56 L16.5 52 L12.5 50.5 L16.5 49Z"
+                fill="#c9a84c"
+                opacity="0.5"
+              />
+              <path
+                d="M148 90 L149 93 L152 94 L149 95 L148 98 L147 95 L144 94 L147 93Z"
+                fill="#f0d080"
+                opacity="0.6"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Hotel Card -->
+        <div class="hotel-card">
+          <div class="hotel-card-header">
+            <div>
+              <!-- ✏️ სასტუმროს სახელი -->
+              <div class="hotel-name">Rooms Hotel Tbilisi</div>
+              <div class="hotel-stars-display">
+                <span>★</span><span>★</span><span>★</span><span>★</span
+                ><span>★</span>
+              </div>
+              <div class="hotel-image">
+                <img src="/6.jpg" alt="Kvareli Lake" />
+              </div>
+              <div class="hotel-tagline">luxury · design · Kvareli</div>
+            </div>
+            <!-- Hotel Photo -->
+            <div class="hotel-nights">
+              <span class="nights-number">1</span>
+              <span class="nights-label">ღამე</span>
+            </div>
+          </div>
+
+          <div class="hotel-details">
+            <div class="detail-item">
+              <span class="detail-label">📍 Location</span>
+              <span class="detail-value">Kvareli Lake</span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">📅 Date</span>
+              <span class="detail-value gold">25–26 May</span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">🕐 Time</span>
+              <span class="detail-value">13:00 PM</span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Link</span>
+              <span class="detail-value">
+                https://www.instagram.com/kundzuli.lakeview?igsh=amR4eTMzdmdqMXdh</span
+              >
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">✨ Guests</span>
+              <span class="detail-value">
+                Birthday princess Nii ✨<br />
+                Mekuna<br />
+                Anuka
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-section">
+          <div class="map-section-label">✦ ლოკაცია ✦</div>
+          <div class="map-embed">
+            <!-- ✏️ შეცვალე src-ში კოორდინატები შენი სასტუმროს მიხედვით -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.952183430185!2d45.7945849!3d41.958362099999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4045dbd2201d782b%3A0x3c167e0ffa7b8ca1!2sKundzuli!5e0!3m2!1sen!2sge!4v1778820155132!5m2!1sen!2sge"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Closing -->
+        <div class="divider-gold">
+          <div class="divider-line"></div>
+          <div class="divider-diamond">◆</div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="closing-message">P.S( არაფრის გაცდენა არ მოგვიწევს)</div>
+      </div>
+    </div>
+
+    <script>
+      let envelopeOpened = false;
+
+      function openEnvelope() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+
+        const flap = document.getElementById("flapGroup");
+        const popup = document.getElementById("letterPopup");
+        const btn = document.getElementById("openLetterBtn");
+        const envelopeSvg = document.querySelector(".env-svg");
+
+        // flap opens
+        flap.classList.add("open");
+
+        // envelope fades away
+        setTimeout(() => {
+          envelopeSvg.style.transition =
+            "opacity 0.8s ease, transform 1s cubic-bezier(0.22,1,0.36,1)";
+
+          envelopeSvg.style.opacity = "0";
+
+          envelopeSvg.style.transform = "scale(0.8) translateY(40px)";
+        }, 700);
+
+        // show beautiful paper
+        setTimeout(() => {
+          popup.classList.add("open");
+          document.getElementById("polaroids").classList.add("show");
+        }, 1000);
+
+        // button appear
+        setTimeout(() => {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "all";
+        }, 1800);
+
+        launchBalloons();
+      }
+
+      function launchBalloons() {
+        const container = document.getElementById("balloons");
+        container.innerHTML = "";
+        const colors = [
+          ["#c9a84c", "#a07828"],
+          ["#d4af60", "#b8922a"],
+          ["#e8c870", "#c9a84c"],
+          ["#f0d080", "#c9a84c"],
+          ["#b8951e", "#8a6e10"],
+        ];
+        const count = 18;
+        for (let i = 0; i < count; i++) {
+          const b = document.createElement("div");
+          b.className = "balloon";
+          const [fill, dark] = colors[i % colors.length];
+          const x = 5 + Math.random() * 90;
+          const size = 36 + Math.random() * 28;
+          const tilt = (Math.random() - 0.5) * 20;
+          const tilt2 = (Math.random() - 0.5) * 14;
+          const delay = Math.random() * 2.5;
+          b.style.cssText = `left:${x}vw; --tilt:${tilt}deg; --tilt2:${tilt2}deg; animation-delay:${delay}s;`;
+          b.innerHTML = `<svg width="${size}" height="${size * 1.3}" viewBox="0 0 40 52">
+              <ellipse cx="20" cy="20" rx="18" ry="20" fill="${fill}" opacity="0.92"/>
+              <ellipse cx="14" cy="13" rx="5" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 14 13)"/>
+              <polygon points="17,40 20,48 23,40" fill="${fill}"/>
+              <line x1="20" y1="48" x2="${18 + Math.random() * 4}" y2="52" stroke="${dark}" stroke-width="1.2"/>
+            </svg>`;
+          container.appendChild(b);
+          setTimeout(() => b.classList.add("launch"), delay * 1000 + 50);
+        }
+      }
+
+      function openFullLetter() {
+        document.getElementById("letter-page").classList.add("visible");
+        window.scrollTo(0, 0);
+      }
+
+      function openGiftPage() {
+        document.getElementById("letter-page").style.display = "none";
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").classList.add("visible");
+        window.scrollTo(0, 0);
+        createStars();
+      }
+
+      function createStars() {
+        const c = document.getElementById("starsContainer");
+        for (let i = 0; i < 80; i++) {
+          const s = document.createElement("div");
+          s.className = "star";
+          s.style.cssText = `
+              left:${Math.random() * 100}%;
+              top:${Math.random() * 100}%;
+              --dur:${2 + Math.random() * 4}s;
+              --delay:${Math.random() * 4}s;
+              width:${1 + Math.random() * 2}px;
+              height:${1 + Math.random() * 2}px;
+            `;
+          c.appendChild(s);
+        }
+      }
+
+      function triggerUpload(id) {
+        document.getElementById(id).click();
+      }
+
+      function loadPhoto(input, imgId, divId) {
+        if (!input.files || !input.files[0]) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.getElementById(imgId);
+          img.src = e.target.result;
+          img.classList.add("loaded");
+          document.getElementById(divId).classList.add("has-img");
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+
+      function openGiftPage() {
+        const page1 = document.getElementById("page1");
+        const page2 = document.getElementById("page2");
+
+        // fade out old scene
+        page1.style.transition =
+          "opacity 1s ease, transform 1.2s cubic-bezier(0.22,1,0.36,1)";
+
+        page1.style.opacity = "0";
+        page1.style.transform = "scale(1.05)";
+
+        setTimeout(() => {
+          page1.style.display = "none";
+
+          // show gift page
+          page2.classList.add("visible");
+
+          // smooth entrance
+          page2.style.opacity = "0";
+          page2.style.transform = "scale(0.98)";
+
+          requestAnimationFrame(() => {
+            page2.style.transition =
+              "opacity 1s ease, transform 1.2s cubic-bezier(0.22,1,0.36,1)";
+
+            page2.style.opacity = "1";
+            page2.style.transform = "scale(1)";
+          });
+
+          window.scrollTo(0, 0);
+
+          createStars();
+        }, 900);
+      }
+    </script>
+  </body>
+</html>
